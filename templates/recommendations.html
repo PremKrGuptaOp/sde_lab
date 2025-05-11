@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendations for {{ user_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Advanced Product Recommendation Engine</h1>
+        <p>AI-driven personalized product recommendations</p>
+    </header>
+
+    <main>
+        <section class="recommendations">
+            <h2>Recommendations for {{ user_name }}</h2>
+            <a href="/" class="btn secondary">← Back to Home</a>
+            
+            {% if products %}
+            <div class="recommendations-grid">
+                {% for product in products %}
+                <div class="product-card recommendation">
+                    <h3>{{ product.name }}</h3>
+                    <p class="category">{{ product.category }}</p>
+                    <p class="price">${{ "%.2f"|format(product.price) }}</p>
+                    <div class="rating">
+                        Rating: {{ product.avg_rating }} / 5
+                        <span class="stars">
+                            {% for i in range(5) %}
+                                {% if i < product.avg_rating|int %}
+                                    ★
+                                {% else %}
+                                    ☆
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    <p class="description">{{ product.description }}</p>
+                    <div class="actions">
+                        <button class="btn view" data-product-id="{{ product.id }}" data-user-id="{{ user_id }}">View</button>
+                        <button class="btn add-to-cart" data-product-id="{{ product.id }}" data-user-id="{{ user_id }}">Add to Cart</button>
+                        <div class="rating-control">
+                            <span>Rate: </span>
+                            <div class="star-rating" data-product-id="{{ product.id }}" data-user-id="{{ user_id }}">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-recommendations">
+                <p>No recommendations available for this user.</p>
+                <p>Try interacting with some products to generate recommendations.</p>
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="user-history">
+            <h2>Recent Activity</h2>
+            <div class="history-container">
+                <div class="loading">Loading user activity...</div>
+                <table class="history-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Action</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-data">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Advanced Product Recommendation Engine &copy; 2025</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Load user history when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserHistory('{{ user_id }}');
+        });
+    </script>
+</body>
+</html>

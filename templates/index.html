@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendation Engine</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Advanced Product Recommendation Engine</h1>
+        <p>AI-driven personalized product recommendations</p>
+    </header>
+
+    <main>
+        <section class="user-selection">
+            <h2>Select a User</h2>
+            <form action="/recommendations" method="get">
+                <div class="form-group">
+                    <label for="user-select">Choose a user:</label>
+                    <select id="user-select" name="user_id" required>
+                        <option value="" disabled selected>-- Select User --</option>
+                        {% for user_id in users %}
+                        <option value="{{ user_id }}">{{ user_id }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn primary">Get Recommendations</button>
+            </form>
+        </section>
+
+        <section class="product-catalog">
+            <h2>Product Catalog</h2>
+            <div class="products-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    <h3>{{ product.name }}</h3>
+                    <p class="category">{{ product.category }}</p>
+                    <p class="price">${{ "%.2f"|format(product.price) }}</p>
+                    <div class="rating">
+                        Rating: {{ product.avg_rating }} / 5
+                        <span class="stars">
+                            {% for i in range(5) %}
+                                {% if i < product.avg_rating|int %}
+                                    ★
+                                {% else %}
+                                    ☆
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    <p class="description">{{ product.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Advanced Product Recommendation Engine &copy; 2025</p>
+    </footer>
+
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
