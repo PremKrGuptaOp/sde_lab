@@ -1,143 +1,182 @@
 {
-    "users": {
-      "user1": {
-        "name": "John Doe",
-        "age": 28,
-        "preferences": ["electronics", "books", "sports"],
-        "interactions": [
-          {
-            "product_id": "prod1",
-            "type": "view",
-            "timestamp": "2025-04-01T10:30:15",
-            "rating": 0
-          },
-          {
-            "product_id": "prod2",
-            "type": "purchase",
-            "timestamp": "2025-04-01T11:20:30",
-            "rating": 4
-          },
-          {
-            "product_id": "prod3",
-            "type": "view",
-            "timestamp": "2025-04-02T09:15:45",
-            "rating": 0
-          },
-          {
-            "product_id": "prod5",
-            "type": "rating",
-            "timestamp": "2025-04-03T16:40:22",
-            "rating": 5
-          }
-        ]
-      },
-      "user2": {
-        "name": "Jane Smith",
-        "age": 34,
-        "preferences": ["fashion", "home", "beauty"],
-        "interactions": [
-          {
-            "product_id": "prod4",
-            "type": "purchase",
-            "timestamp": "2025-04-01T14:25:10",
-            "rating": 5
-          },
-          {
-            "product_id": "prod5",
-            "type": "view",
-            "timestamp": "2025-04-02T10:40:30",
-            "rating": 0
-          },
-          {
-            "product_id": "prod6",
-            "type": "rating",
-            "timestamp": "2025-04-03T11:10:15",
-            "rating": 3
-          }
-        ]
-      },
-      "user3": {
-        "name": "Sam Wilson",
-        "age": 22,
-        "preferences": ["electronics", "games", "sports"],
-        "interactions": [
-          {
-            "product_id": "prod1",
-            "type": "purchase",
-            "timestamp": "2025-04-02T16:30:20",
-            "rating": 4
-          },
-          {
-            "product_id": "prod3",
-            "type": "purchase",
-            "timestamp": "2025-04-03T09:45:12",
-            "rating": 5
-          },
-          {
-            "product_id": "prod7",
-            "type": "view",
-            "timestamp": "2025-04-04T14:20:45",
-            "rating": 0
-          }
-        ]
-      }
+  "users": {
+    "user1": {
+      "name": "John Doe",
+      "age": 28,
+      "preferences": [
+        "electronics",
+        "books",
+        "sports"
+      ],
+      "interactions": [
+        {
+          "product_id": "prod1",
+          "type": "view",
+          "timestamp": "2025-04-01T10:30:15",
+          "rating": 0,
+          "product_name": "Wireless Headphones"
+        },
+        {
+          "product_id": "prod2",
+          "type": "purchase",
+          "timestamp": "2025-04-01T11:20:30",
+          "rating": 4,
+          "product_name": "Fiction Bestseller"
+        },
+        {
+          "product_id": "prod3",
+          "type": "view",
+          "timestamp": "2025-04-02T09:15:45",
+          "rating": 0,
+          "product_name": "Gaming Console"
+        },
+        {
+          "product_id": "prod5",
+          "type": "rating",
+          "timestamp": "2025-04-03T16:40:22",
+          "rating": 5,
+          "product_name": "Smart Home Speaker"
+        },
+        {
+          "product_id": "prod8",
+          "type": "purchase",
+          "timestamp": "2025-05-12T15:16:43.682988",
+          "product_name": "Coffee Maker"
+        },
+        {
+          "product_id": "prod8",
+          "type": "view",
+          "timestamp": "2025-05-12T15:22:30.456693"
+        },
+        {
+          "product_id": "prod7",
+          "type": "purchase",
+          "timestamp": "2025-05-12T15:22:34.703580"
+        },
+        {
+          "product_id": "prod7",
+          "type": "rating",
+          "timestamp": "2025-05-12T15:23:07.289692",
+          "value": 5,
+          "rating": 5.0
+        }
+      ]
     },
-    "products": {
-      "prod1": {
-        "name": "Wireless Headphones",
-        "category": "electronics",
-        "price": 129.99,
-        "avg_rating": 4.5,
-        "description": "High-quality wireless headphones with noise cancellation"
-      },
-      "prod2": {
-        "name": "Fiction Bestseller",
-        "category": "books",
-        "price": 24.99,
-        "avg_rating": 4.2,
-        "description": "Latest bestseller from renowned author"
-      },
-      "prod3": {
-        "name": "Gaming Console",
-        "category": "electronics",
-        "price": 499.99,
-        "avg_rating": 4.8,
-        "description": "Next-generation gaming console with amazing graphics"
-      },
-      "prod4": {
-        "name": "Designer Handbag",
-        "category": "fashion",
-        "price": 349.99,
-        "avg_rating": 4.7,
-        "description": "Luxury designer handbag, perfect for any occasion"
-      },
-      "prod5": {
-        "name": "Smart Home Speaker",
-        "category": "electronics",
-        "price": 89.99,
-        "avg_rating": 4.4,
-        "description": "Voice-controlled smart speaker with built-in assistant"
-      },
-      "prod6": {
-        "name": "Skincare Set",
-        "category": "beauty",
-        "price": 59.99,
-        "avg_rating": 4.3,
-        "description": "Complete skincare routine set with natural ingredients"
-      },
-      "prod7": {
-        "name": "Running Shoes",
-        "category": "sports",
-        "price": 119.99,
-        "avg_rating": 4.6,
-        "description": "Comfortable running shoes with advanced support"
-      },
-      "prod8": {
-        "name": "Coffee Maker",
-        "category": "home",
-        "price": 79.99,
-        "avg_rating": 4.1,
-        "description": "Programmable coffee maker with built-in grinder"
-      }
+    "user2": {
+      "name": "Jane Smith",
+      "age": 34,
+      "preferences": [
+        "fashion",
+        "home",
+        "beauty"
+      ],
+      "interactions": [
+        {
+          "product_id": "prod4",
+          "type": "purchase",
+          "timestamp": "2025-04-01T14:25:10",
+          "rating": 5
+        },
+        {
+          "product_id": "prod5",
+          "type": "view",
+          "timestamp": "2025-04-02T10:40:30",
+          "rating": 0
+        },
+        {
+          "product_id": "prod6",
+          "type": "rating",
+          "timestamp": "2025-04-03T11:10:15",
+          "rating": 3
+        }
+      ]
+    },
+    "user3": {
+      "name": "Sam Wilson",
+      "age": 22,
+      "preferences": [
+        "electronics",
+        "games",
+        "sports"
+      ],
+      "interactions": [
+        {
+          "product_id": "prod1",
+          "type": "purchase",
+          "timestamp": "2025-04-02T16:30:20",
+          "rating": 4
+        },
+        {
+          "product_id": "prod3",
+          "type": "purchase",
+          "timestamp": "2025-04-03T09:45:12",
+          "rating": 5
+        },
+        {
+          "product_id": "prod7",
+          "type": "view",
+          "timestamp": "2025-04-04T14:20:45",
+          "rating": 0
+        }
+      ]
+    }
+  },
+  "products": {
+    "prod1": {
+      "name": "Wireless Headphones",
+      "category": "electronics",
+      "price": 129.99,
+      "avg_rating": 4.5,
+      "description": "High-quality wireless headphones with noise cancellation"
+    },
+    "prod2": {
+      "name": "Fiction Bestseller",
+      "category": "books",
+      "price": 24.99,
+      "avg_rating": 4.2,
+      "description": "Latest bestseller from renowned author"
+    },
+    "prod3": {
+      "name": "Gaming Console",
+      "category": "electronics",
+      "price": 499.99,
+      "avg_rating": 4.8,
+      "description": "Next-generation gaming console with amazing graphics"
+    },
+    "prod4": {
+      "name": "Designer Handbag",
+      "category": "fashion",
+      "price": 349.99,
+      "avg_rating": 4.7,
+      "description": "Luxury designer handbag, perfect for any occasion"
+    },
+    "prod5": {
+      "name": "Smart Home Speaker",
+      "category": "electronics",
+      "price": 89.99,
+      "avg_rating": 4.4,
+      "description": "Voice-controlled smart speaker with built-in assistant"
+    },
+    "prod6": {
+      "name": "Skincare Set",
+      "category": "beauty",
+      "price": 59.99,
+      "avg_rating": 4.3,
+      "description": "Complete skincare routine set with natural ingredients"
+    },
+    "prod7": {
+      "name": "Running Shoes",
+      "category": "sports",
+      "price": 119.99,
+      "avg_rating": 4.6,
+      "description": "Comfortable running shoes with advanced support"
+    },
+    "prod8": {
+      "name": "Coffee Maker",
+      "category": "home",
+      "price": 79.99,
+      "avg_rating": 4.1,
+      "description": "Programmable coffee maker with built-in grinder"
     }
   }
+}

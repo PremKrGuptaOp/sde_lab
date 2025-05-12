@@ -25,11 +25,8 @@ class TestDataProcessor(unittest.TestCase):
     """Test cases for the DataProcessor class."""
     
     def setUp(self):
-        """Set up test fixtures before each test."""
-        # Create a temporary sample data file
-        self.temp_data_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
-        
-        # Sample data for testing
+
+    # Sample data for testing
         self.sample_data = {
             "users": {
                 "user1": {
@@ -69,13 +66,18 @@ class TestDataProcessor(unittest.TestCase):
                 }
             }
         }
-        
-        # Write sample data to the temporary file
-        with open(self.temp_data_file.name, 'w') as f:
+
+        # Create a temporary sample data file
+        self.temp_data_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
+        self.temp_data_file.close()  # Close immediately to avoid locking issues
+
+        # Write sample data to the file
+        with open(self.temp_data_file.name, 'w', encoding='utf-8') as f:
             json.dump(self.sample_data, f)
-        
+
         # Create DataProcessor instance with the temporary file
         self.data_processor = DataProcessor(self.temp_data_file.name)
+
     
     def tearDown(self):
         """Clean up after each test."""
