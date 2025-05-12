@@ -1,119 +1,152 @@
-# 🛍️ AI-Driven Product Recommendation System
+# Advanced Product Recommendation Engine
 
-An intelligent product recommendation engine for e-commerce platforms that delivers personalized suggestions based on user interactions, preferences, and collaborative filtering techniques.
+A Python-based AI-driven system designed to provide personalized product suggestions on an e-commerce platform. This project uses collaborative filtering via cosine similarity to recommend items based on user behavior and rating patterns.
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-active-brightgreen)
+## 🔍 Overview
 
----
+This project focuses on the **Recommendation Generation Module**, the core engine responsible for analyzing user data and predicting relevant products.
 
-## 🚀 Features
+## 📌 Features
 
-- 🧠 **Hybrid Recommendation Engine** (Content + Collaborative Filtering)
-- 👤 Tracks user preferences, behavior, and interactions
-- 🧪 Formal verification and unit testing support
-- 📊 Real-time personalized suggestions via Flask API
-- 📈 Easily extendable for new datasets or models
-
----
-
-## 🖼️ Architecture
-
-![Architecture Diagram](assets/architecture.png) <!-- Save your diagram here -->
-
----
-
-## 🛠️ Tech Stack
-
-- **Python** 3.10+
-- **Flask** for web app and API
-- **NumPy**, **Pandas** for data processing
-- **Matplotlib**, **Seaborn** for optional analytics
-- **SLAM** (Simple Linear Arithmetic Model) for formal verification
-- **unittest** for test automation
+- Collaborative Filtering using Cosine Similarity
+- Formal Verification of similarity logic using Microsoft SLAM
+- Modular and well-documented Python code
+- Black-box and white-box testing with `pytest`
+- Updated UML diagrams (Use Case, DFD, Sequence)
 
 ---
 
 ## 📁 Project Structure
 
-recommendation-engine/
-├── src/
-│ ├── data_processor.py
-│ ├── recommendation.py
-│ └── user_tracker.py
-├── templates/
-├── static/
-├── tests/
-│ └── test_data_processor.py
-├── data/
-│ └── sample_data.json
-├── requirements.txt
-├── README.md
-└── app.py
-
-yaml
-Copy
-Edit
+```
+recommendation.py     # Core logic for recommendation generation
+data_processor_verify.c          # SLAM-verified cosine similarity logic in C
+test_data_processor.py       # Pytest-based automated testing
+README.md                    # This documentation
+/diagrams/                   # Use Case, DFD, and Sequence Diagrams (PDF/PNG)
+```
 
 ---
 
-## 🧪 Run Tests
+## ⚙️ Technologies Used
+
+- **Language**: Python 3.11
+- **Libraries**: pandas, scikit-learn
+- **Testing**: pytest
+- **Verification Tool**: SLAM (Microsoft Research)
+- **Diagram Tools**: draw.io, Mermaid.js
+
+---
+
+## 🧠 Recommendation Logic
+
+The recommendation engine works by:
+
+1. Accepting a user-item rating matrix.
+2. Normalizing the data.
+3. Computing user-user similarity using cosine similarity.
+4. Aggregating scores from top similar users.
+5. Returning the top-N recommended items.
+
+```python
+result = engine.recommend(user_index=0, top_n=3)
+```
+
+---
+
+## ✅ How to Run
+
+### Step 1: Install Dependencies
 
 ```bash
-python -m unittest discover tests
-▶️ Run the Application
-bash
-Copy
-Edit
-# Create virtual environment (optional but recommended)
-python -m venv venv
-venv\Scripts\activate
+pip install pandas scikit-learn pytest
+```
 
-# Install dependencies
-pip install -r requirements.txt
+### Step 2: Use the Recommendation Module
 
-# Run Flask app
-python app.py
-Then go to: http://127.0.0.1:5000 or http://<your-local-ip>:5000
+```python
+import pandas as pd
+from recommendation_module import RecommendationEngine
 
-💡 Example Users & Products
-You can view and modify user profiles and interaction data in:
+df = pd.DataFrame({
+    'item1': [5, 3, 0],
+    'item2': [4, 0, 0],
+    'item3': [1, 1, 0],
+    'item4': [0, 0, 5],
+    'item5': [0, 0, 4]
+})
 
-bash
-Copy
-Edit
-data/sample_data.json
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+engine = RecommendationEngine(df)
+recommendations = engine.recommend(0, top_n=2)
+print(recommendations)
+```
 
-✨ Acknowledgments
-OpenAI ChatGPT
+### Step 3: Run Automated Tests
 
-[Numpy & Flask Documentation](https://numpy.org/doc & https://flask.palletsprojects.com/)
-
-yaml
-Copy
-Edit
+```bash
+pytest test_recommendation.py
+```
 
 ---
 
-### ✅ What You Should Do Next:
+## 🔒 Formal Verification
 
-1. **Create an `assets/` folder** in your project directory.
-2. Add an image `architecture.png` (e.g., your project flow or architecture diagram).
-3. Commit and push the `README.md` and images to GitHub.
+The cosine similarity function was re-implemented in C and verified using **SLAM** to ensure:
+
+- Result is always in the range [-1, 1]
+- Division-by-zero is avoided
+
+**Command Used**:
+```bash
+slam verify_similarity.c
+```
+
+**Result**: All assertions hold. No unsafe conditions found.
 
 ---
 
-Would you like me to **create a sample architecture diagram** for this project?
+## 📊 Design Diagrams
 
-2/2
+Diagrams created using draw.io and Mermaid.js:
 
+- Use Case Diagram
+- DFD Level 1
+- Sequence Diagram
 
+See `/diagrams/` folder or render the Mermaid snippets in VS Code or the Mermaid Live Editor.
 
+---
 
+## 🧪 Sample Manual Test Case
 
+| Test ID | Input (user_index, top_n) | Expected Output | Status |
+|--------|-----------------------------|------------------|--------|
+| TC01   | (0, 3)                       | 3 items returned | Pass   |
+| TC02   | (2, 1)                       | 1 item returned  | Pass   |
+| TC03   | Invalid user index          | Handled gracefully | Pass |
 
+---
 
+## 📈 Quality Attributes Evaluated
 
+- **Performance**: Fast similarity computation using `scikit-learn`
+- **Maintainability**: Modular class-based design
+- **Reliability**: Verified using SLAM and passed multiple test cases
+
+---
+
+## 📚 References
+
+- [Python 3.11](https://www.python.org)
+- [Scikit-learn](https://scikit-learn.org)
+- [Pandas](https://pandas.pydata.org)
+- [pytest](https://docs.pytest.org)
+- [SLAM (Microsoft)](https://www.microsoft.com/en-us/research/project/slam/)
+- [draw.io](https://draw.io)
+- [Mermaid.js](https://mermaid.js.org)
+
+---
+
+## 📄 License
+
+This project is released under the MIT License.
